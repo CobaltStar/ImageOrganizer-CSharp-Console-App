@@ -1,0 +1,13 @@
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\bin\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].exe
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\bin\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].deps.json
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\bin\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].runtimeconfig.json
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\bin\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].runtimeconfig.dev.json
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\bin\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].dll
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\bin\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].pdb
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].csprojAssemblyReference.cache
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].AssemblyInfoInputs.cache
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].AssemblyInfo.cs
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].csproj.CoreCompileInputs.cache
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].dll
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].pdb
+C:\_DATA\Programming\GIt Repositories\Image Organizer [C Sharp Port]\Image Organizer [C Sharp Port]\obj\Debug\netcoreapp3.1\Image Organizer [C Sharp Port].genruntimeconfig.cache
