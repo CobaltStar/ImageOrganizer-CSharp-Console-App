@@ -9,9 +9,10 @@ namespace Image_Organizer__C_Sharp_Port_
 {
     class Program
     {
+        //sorts files - also ignores the log file in sorting
         private static List<FileInfo> sortFilesByDateCreated(string path)
         {
-            return new DirectoryInfo(@path).GetFiles()
+            return new DirectoryInfo(@path).GetFiles().Where(s => !s.Name.EndsWith(".log"))
                 .OrderBy(f => f.LastWriteTime)
                 .ToList();
         }
