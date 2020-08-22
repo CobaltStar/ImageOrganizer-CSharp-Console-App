@@ -43,7 +43,7 @@ namespace Image_Organizer__C_Sharp_Port_
             //Writing to logfile
             var ts = Stopwatch.GetTimestamp();
             DateTime dt = DateTime.Now;
-            string formattedDate = dt.ToString("MM-dd-yyyy");
+            string formattedDate = dt.ToString("hh.mm.sss MM-dd-yy");
             using (StreamWriter sw = new StreamWriter( formattedDate + ".log"))
             {
                 foreach (KeyValuePair<string, string> kvp in logFile)
