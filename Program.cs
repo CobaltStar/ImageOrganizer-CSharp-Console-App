@@ -43,8 +43,8 @@ namespace com.archit.das
 
         static void Main(string[] args)
         {
-            //String path = args[0]; //TODO: Make the code actually use that argument from the main program
-            string path = "C:\\Users\\archi\\OneDrive\\Music\\Geo Dash ringtones";
+            String path = args[0]; //TODO: Make the code actually use that argument from the main program
+            //string path = "C:\\Users\\archi\\OneDrive\\Music\\Geo Dash ringtones";
             string intendedName = Path.GetFileName(path);
             Directory.SetCurrentDirectory(path);
 
