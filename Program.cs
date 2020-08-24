@@ -57,16 +57,27 @@ namespace com.archit.das
             
             string dialogBoxData = sb.ToString().TrimEnd();
             DialogResult res = MessageBox.Show(dialogBoxData, "All Files will be renamed as such",
-                MessageBoxButtons., MessageBoxIcon.Information);
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
-                MessageBox.Show("You have clicked Ok Button");
-                //Some task…  
+                
+                try
+                {
+                    foreach (var kvp in logFile)
+                    {
+                        File.Move(kvp.Key, kvp.Value);
+                    }
+                    MessageBox.Show("Files have been sorted");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("An exception has occured: \n" + e.Message);
+                }
             }
 
             if (res == DialogResult.Cancel)
             {
-                MessageBox.Show("You have clicked Cancel Button");
+                MessageBox.Show("Sorting has been cancelled");
                 //Some task…  
             }
 
