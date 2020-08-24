@@ -64,7 +64,7 @@ namespace com.archit.das
             //Writing to logfile and creating dialog box information
             var ts = Stopwatch.GetTimestamp();
             DateTime dt = DateTime.Now;
-            string formattedDate = dt.ToString("hh.mm.sss MM-dd-yy");
+            string formattedDate = dt.ToString("MM/dd/yy hh:mm:sss");
             StringBuilder sb = new StringBuilder(); //Dialog Box Content
             foreach (KeyValuePair<string, string> kvp in logFile)
             {
@@ -73,17 +73,18 @@ namespace com.archit.das
             
             
             string dialogBoxData = sb.ToString().TrimEnd();
-            DialogResult res = MessageBox.Show(dialogBoxData, "All Files will be renamed as such",
+            DialogResult res = MessageBox.Show(dialogBoxData, "Rename Files?",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
                 
                 try
                 {
-                    using (StreamWriter sw = new StreamWriter(formattedDate + ".log"))
+                    using (StreamWriter sw = File.AppendText( "Images.log"))
                     {
                         
-                        logFileClearing(path);
+                        //logFileClearing(path);
+                        sw.WriteLine(formattedDate);
                         foreach (KeyValuePair<string, string> kvp in logFile)
                         {
                             sw.WriteLine("Original File Name = {0}, New File Name = {1}", kvp.Key, kvp.Value);
