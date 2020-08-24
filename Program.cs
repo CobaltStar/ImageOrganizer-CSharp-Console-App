@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
-namespace Image_Organizer__C_Sharp_Port_
+namespace com.archit.das
 {
     class Program
     {
@@ -16,11 +17,10 @@ namespace Image_Organizer__C_Sharp_Port_
                 .OrderBy(f => f.LastWriteTime)
                 .ToList();
         }
-        
-        
+
+
         static void Main(string[] args)
         {
-            
             //String path = args[0]; //TODO: Make the code actually use that argument from the main program
             string path = "C:\\Users\\archi\\OneDrive\\Music\\Geo Dash ringtones";
             string intendedName = Path.GetFileName(path);
@@ -35,31 +35,48 @@ namespace Image_Organizer__C_Sharp_Port_
             int id = 1;
             foreach (var oldFile in sortedFiles)
             {
-                logFile.Add(oldFile.Name, intendedName +" " + id + Path.GetExtension(oldFile.FullName));
+                logFile.Add(oldFile.Name, intendedName + " " + id + Path.GetExtension(oldFile.FullName));
                 id++;
             }
-            
-            
-            //Writing to logfile
+
+
+            //Writing to logfile and creating dialog box information
             var ts = Stopwatch.GetTimestamp();
             DateTime dt = DateTime.Now;
             string formattedDate = dt.ToString("hh.mm.sss MM-dd-yy");
-            using (StreamWriter sw = new StreamWriter( formattedDate + ".log"))
+            StringBuilder sb = new StringBuilder(); //Dialog Box Content
+            using (StreamWriter sw = new StreamWriter(formattedDate + ".log"))
             {
                 foreach (KeyValuePair<string, string> kvp in logFile)
                 {
                     sw.WriteLine("Original File Name = {0}, New File Name = {1}", kvp.Key, kvp.Value);
+                    sb.AppendFormat("{0} -> {1}{2}", kvp.Key, kvp.Value, Environment.NewLine);
                 }
             }
             
             
+            string dialogBoxData = sb.ToString().TrimEnd();
+            DialogResult res = MessageBox.Show(dialogBoxData, "All Files will be renamed as such",
+                MessageBoxButtons., MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                MessageBox.Show("You have clicked Ok Button");
+                //Some task…  
+            }
+
+            if (res == DialogResult.Cancel)
+            {
+                MessageBox.Show("You have clicked Cancel Button");
+                //Some task…  
+            }
+
+
             /*foreach (KeyValuePair<string, string> kvp in logFile)
             {
                 //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
                 Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
             }*/
-            
-                
+
 
             /*int id = 1;
             Directory.SetCurrentDirectory(path);
@@ -68,7 +85,7 @@ namespace Image_Organizer__C_Sharp_Port_
                 File.Move(file.Name,   intendedName + " " + id + Path.GetExtension(file.FullName));
                 id++;
             }*/
-            
+
             /*DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);  
             if (res == DialogResult.OK) {  
                 MessageBox.Show("You have clicked Ok Button");  
@@ -78,8 +95,6 @@ namespace Image_Organizer__C_Sharp_Port_
                 MessageBox.Show("You have clicked Cancel Button");  
                 //Some task…  
             }   */
-
         }
     }
-    
 }
