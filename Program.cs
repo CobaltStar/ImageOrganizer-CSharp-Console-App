@@ -26,7 +26,6 @@ namespace com.archit.das
 
             foreach (var logFile in oldLogFiles)
             {
-
                 try
                 {
                     File.Delete(logFile.Name);
@@ -38,6 +37,8 @@ namespace com.archit.das
                 }
             }
         }
+        
+        
 
 
         static void Main(string[] args)
@@ -65,15 +66,9 @@ namespace com.archit.das
             DateTime dt = DateTime.Now;
             string formattedDate = dt.ToString("hh.mm.sss MM-dd-yy");
             StringBuilder sb = new StringBuilder(); //Dialog Box Content
-            using (StreamWriter sw = new StreamWriter(formattedDate + ".log"))
+            foreach (KeyValuePair<string, string> kvp in logFile)
             {
-                //TODO:Add log file clearing here
-                logFileClearing(path);
-                foreach (KeyValuePair<string, string> kvp in logFile)
-                {
-                    sw.WriteLine("Original File Name = {0}, New File Name = {1}", kvp.Key, kvp.Value);
-                    sb.AppendFormat("{0} -> {1}{2}", kvp.Key, kvp.Value, Environment.NewLine);
-                }
+                sb.AppendFormat("{0} -> {1}{2}", kvp.Key, kvp.Value, Environment.NewLine);
             }
             
             
@@ -85,11 +80,19 @@ namespace com.archit.das
                 
                 try
                 {
-                    foreach (var kvp in logFile)
+                    using (StreamWriter sw = new StreamWriter(formattedDate + ".log"))
                     {
-                        File.Move(kvp.Key, kvp.Value);
+                        
+                        logFileClearing(path);
+                        foreach (KeyValuePair<string, string> kvp in logFile)
+                        {
+                            sw.WriteLine("Original File Name = {0}, New File Name = {1}", kvp.Key, kvp.Value);
+                            File.Move(kvp.Key, kvp.Value);
+                        }
                     }
+
                     MessageBox.Show("Files have been sorted");
+                    
                 }
                 catch (Exception e)
                 {
@@ -100,34 +103,8 @@ namespace com.archit.das
             if (res == DialogResult.Cancel)
             {
                 MessageBox.Show("Sorting has been cancelled");
-                //Some task…  
             }
-
-
-            /*foreach (KeyValuePair<string, string> kvp in logFile)
-            {
-                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-            }*/
-
-
-            /*int id = 1;
-            Directory.SetCurrentDirectory(path);
-            foreach (var file in sortedFiles)
-            {
-                File.Move(file.Name,   intendedName + " " + id + Path.GetExtension(file.FullName));
-                id++;
-            }*/
-
-            /*DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);  
-            if (res == DialogResult.OK) {  
-                MessageBox.Show("You have clicked Ok Button");  
-                //Some task…  
-            }  
-            if (res == DialogResult.Cancel) {  
-                MessageBox.Show("You have clicked Cancel Button");  
-                //Some task…  
-            }   */
+            
         }
     }
 }
