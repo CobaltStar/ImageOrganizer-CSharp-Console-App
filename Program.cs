@@ -18,6 +18,27 @@ namespace com.archit.das
                 .ToList();
         }
 
+        private static void logFileClearing(string path)
+        {
+            var oldLogFiles = new DirectoryInfo(@path).GetFiles().Where(s => s.Name.EndsWith(".log"))
+                .OrderBy(f => f.LastWriteTime)
+                .ToList();
+
+            foreach (var logFile in oldLogFiles)
+            {
+
+                try
+                {
+                    File.Delete(logFile.Name);
+                }
+                catch (IOException e)
+                {
+                    //TODO: Figure out why this is happening but program is working as expected
+                    Console.WriteLine("IO exception caught");
+                }
+            }
+        }
+
 
         static void Main(string[] args)
         {
@@ -28,7 +49,6 @@ namespace com.archit.das
 
             //Sorts the files
             List<FileInfo> sortedFiles = sortFilesByDateCreated(path);
-            sortedFiles.ForEach(Console.WriteLine);
 
             //TODO: Make log file with a dictionary of changes
             Dictionary<string, string> logFile = new Dictionary<string, string>();
@@ -47,6 +67,8 @@ namespace com.archit.das
             StringBuilder sb = new StringBuilder(); //Dialog Box Content
             using (StreamWriter sw = new StreamWriter(formattedDate + ".log"))
             {
+                //TODO:Add log file clearing here
+                logFileClearing(path);
                 foreach (KeyValuePair<string, string> kvp in logFile)
                 {
                     sw.WriteLine("Original File Name = {0}, New File Name = {1}", kvp.Key, kvp.Value);
